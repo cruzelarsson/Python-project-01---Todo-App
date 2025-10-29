@@ -1,5 +1,5 @@
-
 while True:
+    # gets user input and strip space chars from it
     user_action = input("Type add, show, edit, exit or mark completed task: ")
     user_action = user_action.strip()
 
@@ -8,25 +8,23 @@ while True:
         case 'add':
             todo = input("Enter a todo: ") + "\n"
 
-            file = open("todos.txt", "r")
-            todos = file.readlines()
-            file.close()
+            with open("todos.txt", "r") as file:
+                todos  =  file.readlines()
 
             todos.append(todo)
 
-            file = open("todos.txt", "w")
-            file.writelines(todos)
-            file.close()
+            with open ("todos.txt", "w") as file:
+                file.writelines(todos)
 
         case 'show':
-            file = open("todos.txt", "r")
-            todos = file.readlines()
-            file.close()
 
-            #new_todos = [item.strip("\n") for item in todos]
+            with open("todos.txt", "r") as file:
+                todos  =  file.readlines()
+
+
+            new_todos = [item.strip("\n") for item in todos]
 
             #new_todos = []
-
            #for item in todos:
                 #new_item = item.strip("\n")
                 #new_todos.append(new_item)
@@ -40,13 +38,32 @@ while True:
 
         case 'edit':
             number = int(input("Number of the todo to edit: "))
+            number = number - 1
+
+            with open("todos.txt", "r") as file:
+                todos  =  file.readlines()
+
             new_todo = input ("Enter the new todo: ")
-            todos[number-1] = new_todo
-            print(todos[number-1])
+            todos[number] = new_todo + "\n"
+
+            with open ("todos.txt", "w") as file:
+                file.writelines(todos)
 
         case 'complete':
             number = int(input("Number of completed tasks: "))
-            todos.pop(number-1)
+
+            with open("todos.txt", "r") as file:
+                todos = file.readlines()
+
+            index = number - 1
+            todo_to_remove = todos[index].strip("\n")
+            todos.pop(index)
+
+            with open("todos.txt", "w") as file:
+                file.writelines(todos)
+
+            message = f"Todo {todo_to_remove} was removed from the list. "
+            print(message)
 
         case 'exit':
             break
