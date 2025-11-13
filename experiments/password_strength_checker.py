@@ -22,7 +22,6 @@ for i in password:
 
 result["uppercase"]= uppercase
 
-print(result)
 
 if all(result.values()):
     print("Strong Password")
