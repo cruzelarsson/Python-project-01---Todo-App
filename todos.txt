@@ -11,3 +11,4 @@ make soup
 make pizza
 does this work?
 maybe it works?
+fixed the todos
