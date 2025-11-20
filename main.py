@@ -29,7 +29,7 @@ while True:
 
     elif user_action.startswith("show"):
 
-        todos = get_todos()
+        todos = get_todos("todos.txt")
 
 
         #new_todos = [item.strip("\n") for item in todos]
@@ -51,7 +51,7 @@ while True:
             number = int(user_action [5:])
             number = number - 1
 
-            todos = get_todos()
+            todos = get_todos("todos.txt")
 
             new_todo = input ("Enter the new todo: ")
             todos[number] = new_todo + '\n'
@@ -66,7 +66,7 @@ while True:
         try:
             number = int(user_action[9:])
 
-            todos = get_todos()
+            todos = get_todos("todos.txt")
 
             index = number - 1
             todo_to_remove = todos[index].strip("\n")
