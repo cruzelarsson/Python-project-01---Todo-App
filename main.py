@@ -1,6 +1,6 @@
 #custom function
-def get_todos():
-    with open("todos.txt", "r") as file:
+def get_todos(filepath):
+    with open(filepath, "r") as file:
         todos_local = file.readlines()
     return todos_local
 
@@ -20,7 +20,7 @@ while True:
         todo = user_action[4:]
 
         #reads from the list
-        todos = get_todos()
+        todos = get_todos("todos.txt")
 
         todos.append(todo + "\n")
 
