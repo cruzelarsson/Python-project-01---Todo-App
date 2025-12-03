@@ -1,12 +1,10 @@
-cola
 update the OS
 get the car
 fix the bug
 clean the bug
 fix the drawer
 add a new member
- add a new member
-asdasda
+Work on KiCad
 make soup
 make pizza
 does this work?

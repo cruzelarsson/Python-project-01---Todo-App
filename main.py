@@ -1,14 +1,13 @@
 #custom function
-def get_todos(filepath):
+def get_todos(filepath="todos.txt"): # Added default value for convenience
     with open(filepath, "r") as file:
         todos_local = file.readlines()
     return todos_local
 
 
-def access_todos():
-    with open("todos.txt", "w") as file:
-        file.writelines(todos)
-    return todos
+def access_todos(todos_arg, filepath="todos.txt"):
+    with open(filepath, "w") as file:
+        file.writelines(todos_arg)
 
 
 while True:
@@ -20,12 +19,12 @@ while True:
         todo = user_action[4:]
 
         #reads from the list
-        todos = get_todos("todos.txt")
+        todos = get_todos()
 
         todos.append(todo + "\n")
 
         #writes into the list
-        todos = access_todos()
+        access_todos(todos)
 
     elif user_action.startswith("show"):
 
@@ -56,7 +55,7 @@ while True:
             new_todo = input ("Enter the new todo: ")
             todos[number] = new_todo + '\n'
 
-            todos = access_todos()
+            access_todos(todos)
 
         except ValueError:
             print("Your command is not valid")
@@ -72,7 +71,7 @@ while True:
             todo_to_remove = todos[index].strip("\n")
             todos.pop(index)
 
-            todos = access_todos()
+            access_todos(todos)
 
 
             message = f"Todo {todo_to_remove} was removed from the list. "
